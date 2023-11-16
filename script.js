@@ -1,1 +1,1 @@
-console.log("Hey bruh!!")
+const add = (...num) => num.reduce((acc, curr) => acc + curr, 0)
