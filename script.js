@@ -16,3 +16,6 @@ let secondNum // = user input
 // buttons with operators 
 // display
 // clear / reset display
+
+const header = document.querySelector(".header")
+header.textContent = "1 + 3 + 3 + 7"
