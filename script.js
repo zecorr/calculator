@@ -7,3 +7,12 @@ const multiply = (...num) => num.reduce((acc, curr) => acc * curr, 1)
 const divide = (...num) => num.reduce((acc, curr) => acc / curr)
 
 const power = (a, b) => Math.pow(a, b)
+
+let firstNum // = user input
+let operator // = user input
+let secondNum // = user input
+
+// buttons with numbers
+// buttons with operators 
+// display
+// clear / reset display
