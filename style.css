@@ -1,109 +1,73 @@
 body {
     background-color: darkslategrey;
     display: flex;
-    justify-content: center;
-    /* border: 3px solid red; */
-    height: 90vh;
-    align-items: center;
-    margin: 0;
-    
-}
-
-.container-wrapper {
-    /* border: 3px solid red; */
-    width: fit-content;
-    height: auto;
-    display: flex;
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* padding: 50px 300px; */
+    justify-content: flex-end;
+    margin: 0 100px;
+    padding: 0;
 }
 
 .container {
-    border: 2px solid black;
-    width: 100%;
-    /* height: auto; */
-    /* padding: 5px; */
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    border-radius: 5px;
 }
 
 .calculator {
-    border: 2px solid black;
-    width: 210px;
-    height: auto;
+    border: 4px solid black;
     background-color: darkgray;
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+.screen-container {
+    border: 3px solid black;
     border-radius: 5px;
 }
 
-.screen {
+.screen-upper {
     /* border: 2px solid red; */
-    /* padding: 10px; */
-    /* background-color: red; */
-    border-radius: 5px 5px 0 0;
-}
-
-.screen-border {
-    /* border: 2px solid green; */
-    /* width: 300px; */
-}
-
-.screen-display {
-    border: 2px solid black;
-    /* width:300px; */
-    height: 60px;
+    height: 40px;
+    background-color: lightgray;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
-    background-color: lightgray;
-    padding: 5px 10px;
-    border-radius: 5px;
+    align-items: flex-end;
+    padding: 0 8px;
+    font-size: 0.8rem;
+}
 
+.screen-lower {
+    /* border: 2px solid greenyellow; */
+    font-size: 1.1rem;
+    height: 60px;
+    background-color: lightgray;
+    padding: 4px 8px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
 .row {
-    /* display: flex; */
-    /* justify-content: space-between; */
-    /* border: 2px solid blue; */
     width: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 5%;
-    /* padding: 10px; */
-    /* background-color: darkgray; */
 }
 
 .btn {
-    border: 2px solid black;
-    width: 100%;
-    height: 40px;
+    width: 3.5rem;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
     background-color: lightgray;
     margin: 10px 0 0 0;
-
-    
-    
-}
-
-.clear-btn {
-    background-color: pink;
-}
-
-.delete-btn {
-    background-color: #aaf;
+    padding: 1rem;
 
 }
 
-.button-grid {
-    /* border: 2px solid greenyellow */
+.top-row {
+    width: 7rem;
 }
