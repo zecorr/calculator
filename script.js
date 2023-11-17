@@ -17,5 +17,5 @@ let secondNum // = user input
 // display
 // clear / reset display
 
-const header = document.querySelector(".header")
+const header = document.querySelector(".screen-display")
 header.textContent = "1 + 3 + 3 + 7"
