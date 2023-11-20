@@ -51,6 +51,8 @@ const getNum = function () {
 const pushDot = function (){
     if(!firstNumArr.includes(".")){
         firstNumArr.push(".")
+    } else if (!secondNumArr.includes(".")){
+        secondNumArr.push(".")
     }
 }
 
