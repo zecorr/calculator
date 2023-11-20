@@ -1,65 +1,10 @@
 // Operations
-const add = (...num) => num.reduce((acc, curr) => acc + curr, 0)
+const add = (...num) => num.reduce((acc, curr) => acc + curr)
 const subtract = (...num) => num.reduce((acc, curr) => acc - curr)
 const multiply = (...num) => num.reduce((acc, curr) => acc * curr, 1)
 const divide = (...num) => num.reduce((acc, curr) => acc / curr)
-// const power = (a, b) => Math.pow(a, b)  // future development
 
-
-// store numbers and operators as arrays
-let arr1 = []
-let arr2 = []
-let arr3 = []
-let arr4 = []
-let arr5 = []
-
-// Initial number and operator gathering
-let firstValue
-let operator
-let firstNumber = true
-let secondValue
-let thirdValue
-let fourthValue
-
-const emptyFirstNumber = function (){
-    arr1 = []
-    firstValue = 0
-    firstNumber = true
-}
-
-const getNum = function(){
-    if (!firstNumber){
-        arr3.push(Number(this.textContent))
-        screenLower.textContent = Number(arr3.join(""))
-        secondValue = Number(arr3.join(''))
-    }
-    else {
-    arr1.push(Number(this.textContent))
-    screenLower.textContent = Number(arr1.join(''))}
-    firstValue = Number(arr1.join(""))
-}
-
-// create object assigning name of operator with symbol
-// can then return existing name function to run
-
-const getOperator = function (){
-
-    if (!firstNumber){
-        arr4.push(this.textContent)
-        screenLower.textContent = arr4[arr4.length -1]
-        operator = arr4[arr4.length - 1]
-        console.log(operator)
-        firstNumber = false
-    }
-    arr2.push(this.textContent)
-    screenLower.textContent = arr2[arr2.length -1]
-    operator = arr2[arr2.length - 1]
-    console.log(operator)
-    firstNumber = false
-}
-
-// Number Operation Processing
-
+// Operators - pair the operator symbol (string key) with the
 const operators = {
     '+' : add,
     '-' : subtract,
@@ -67,40 +12,163 @@ const operators = {
     '/' : divide
 }
 
+// store numbers and operators as arrays
+let firstNumArr = []
+let firstOperatorArr = []
+let secondNumArr = []
 
-const equals = function (){
-    outcome = `${arr1.join('')} ${arr2[arr2.length - 1]} ${arr3.join('')}`
-    screenUpper.textContent = outcome
-    console.log(outcome)
-    screenLower.textContent = operators[operator](firstValue, secondValue)
-    
+// Values and operator stored after extracting from array
+let firstValue
+let operator
+let secondValue
+let total
+
+// Get numbers
+const getNum = function () {
+
+    if(!operator){
+        firstNumArr.push(Number(this.textContent))
+        firstValue = Number(firstNumArr.join(""))
+        screenLower.textContent = firstValue
+    } else {
+        screenUpper.textContent = `${firstValue} ${operator}`
+        secondNumArr.push(Number(this.textContent))
+        secondValue = Number(secondNumArr.join(''))
+        screenLower.textContent = secondValue
+    }
 }
 
+
+//
+//
+//
+
+// finish 
+// 
+//
+
+// Push Dot
+const pushDot = function (){
+    if(!firstNumArr.includes(".")){
+        firstNumArr.push(".")
+    }
+}
+
+// Store operator in array
+const getOperator = function (){
+
+    if(!!firstValue && !!operator && !!secondValue){
+        total = operators[operator](firstValue, secondValue)
+        firstValue = total
+        firstNumArr = []
+        secondNumArr = []
+        secondValue = 0
+    } else if (!!firstValue) {
+        screenUpper.textContent = `${firstValue}`
+        firstOperatorArr.push(this.textContent)
+        operator = firstOperatorArr[firstOperatorArr.length -1]
+        screenLower.textContent = operator
+        console.log(firstValue, operator)
+    } else {
+        firstOperatorArr.push(this.textContent)
+        screenUpper.textContent = firstOperatorArr[firstOperatorArr.length -1]
+    }
+
+
+}
+
+// Combine arrays and value to produce result
+const equals = function (){
+
+    if(typeof firstValue == 'number' && !!operator && typeof secondValue == 'number'){
+        outcome = `${firstValue} ${operator} ${secondValue}`
+        screenUpper.textContent = outcome
+        console.log(`Outcome : ${outcome}`)
+        total = operators[operator](firstValue, secondValue)
+        console.log(`Total : ${total}`);
+        screenLower.textContent = total
+        console.log(total)
+        firstValue = total
+    }
+}
+
+// Clear screen of all data
 const clearScreen = function (){
-    arr1 = []
-    arr2 = []
-    arr3 = []
-    firstValue = 0
-    secondValue = 0
+    firstNumArr = []
+    firstOperatorArr = []
+    secondNumArr = []
+    firstValue = null
+    secondValue = null
     screenLower.textContent = ''
     screenUpper.textContent = ''
+    operator = ""
 
 }
 
+
+// put total in an object to 
+
+// total now equals first value
+// operator is saved after you're on the second number
+
+
+
+
+// Delete / pop() last item in active array
 const deleteNum = function (){
+    // if(!secondValue){
+    //     firstNumArr.pop()
+    //     firstValue = firstNumArr.join('')
+    //     screenLower.textContent = firstValue
+    // } else {
+    //     secondNumArr.pop()
+    //     secondValue = secondNumArr.join('')
+    //     screenLower.textContent = secondValue
+    // }
+    
 
 }
 
 
 
+
+// create array > join array > store value as first value > put in different array
+// get operator > store in array next to first value
+// clear first array and reuse to grab 2nd value
+// clear operator > store in array next to 2nd value
+// repeat indefinitely
+// Equals is run as the operator is pressed
+// Equals keeps total ready for additional operations
+// clear resets all values
+// delete pop()'s current working array 
+
+
+
+
+
+
+
+
+
+
+// number input > join > store 
+
+
+
+
+
+
+///////
+///
+//
 // Calculator Body
 // 7th floor
 let screenUpper = document.querySelector(".screen-upper")
-screenUpper.textContent = ""
+// screenUpper.textContent = ""
 
 // 6th floor
 let screenLower = document.querySelector(".screen-lower")
-screenLower.textContent = ""
+// screenLower.textContent = ""
 
 // 5th floor
 const clearBtn = document.querySelector(".btn-Clear")
@@ -140,13 +208,10 @@ btnMinus.addEventListener('click', getOperator)
 
 // 1st floor
 const btnDot = document.querySelector(".btn-Dot")
-btnDot.addEventListener('click', getNum)
+btnDot.addEventListener('click', pushDot)
 const btn0 = document.querySelector(".btn-0")
 btn0.addEventListener('click', getNum)
 const btnEquals = document.querySelector(".btn-Equals")
 btnEquals.addEventListener('click', equals)
 const btnPlus = document.querySelector(".btn-Plus")
 btnPlus.addEventListener('click', getOperator)
-
-
-
